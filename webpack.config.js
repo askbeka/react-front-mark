@@ -48,7 +48,7 @@ var config = {
   plugins: plugins,
   externals: {
       'react': 'react',
-      'react-dom': 'react-dom'
+      'front-markjs': 'front-markjs'
   }
 };
 
