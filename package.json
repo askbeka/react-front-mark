@@ -4,8 +4,10 @@
   "description": "seacrh highlighter react component",
   "main": "lib/react-front-mark.js",
   "scripts": {
+    "prepublish": "npm run dev && npm run build",
     "build": "webpack --mode=build",
-    "dev": "webpack --progress --colors --watch --mode=dev",
+    "dev": "webpack --mode=dev",
+    "start": "webpack --progress --colors --watch --mode=dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
