@@ -1,8 +1,11 @@
 import React, {PropTypes as type, Component} from 'react';
 import Mark from 'front-markjs';
 
-export default class Highlighter extends Component {
+export default class ReactMark extends Component {
+    
     static propTypes = {
+        word: type.string,
+        children: type.any.isRequired,
         element: type.string,
         className: type.string,
         exclude: type.array,
@@ -28,8 +31,32 @@ export default class Highlighter extends Component {
         log: type.object
     }
 
+    static defaultProps = {
+        element: 'mark',
+        className: '',
+        exclude: [],
+        separateWordSearch: true,
+        accuracy: 'partially',
+        diacritics: true,
+        synonyms: {},
+        iframes: false,
+        acrossElements: false,
+        caseSensitive: false,
+        ignoreJoiners: false,
+        debug: false,
+        log: window.console
+    }
+
     componentDidMount() {
         this.markInstance = new Mark(this.context);
+        this.mark();
+    }
+
+    componentWillUpdate() {
+        this.unmark();
+    }
+
+    componentDidUpdate() {
         this.mark();
     }
 
@@ -38,8 +65,8 @@ export default class Highlighter extends Component {
         this.markInstance.mark(word, props);
     }
 
-    componentDidUpdate() {
-        this.mark();
+    mark() {
+        this.markInstance.unmark();
     }
 
     redner() {

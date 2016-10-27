@@ -1,8 +1,8 @@
 {
-  "name": "react-highlight",
+  "name": "react-front-mark",
   "version": "1.0.0",
   "description": "seacrh highlighter react component",
-  "main": "lib/react-highlight.js",
+  "main": "lib/react-front-mark.js",
   "scripts": {
     "build": "webpack --mode=build",
     "dev": "webpack --progress --colors --watch --mode=dev",
@@ -14,6 +14,7 @@
   },
   "keywords": [
     "react",
+    "front-markjs",
     "highlight",
     "mark",
     "search"

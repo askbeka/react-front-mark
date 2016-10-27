@@ -18,7 +18,7 @@ if (env === 'build') {
 }
 
 var config = {
-  entry: path.join(__dirname, 'src/highlight.js'),
+  entry: path.join(__dirname, `src/${libraryName}.js`),
   devtool: 'source-map',
   output: {
     path: path.join(__dirname, '/lib'),
