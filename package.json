@@ -1,7 +1,7 @@
 {
   "name": "react-front-mark",
   "version": "1.0.0",
-  "description": "seacrh highlighter react component",
+  "description": "react component for mark.js(front-markjs)",
   "main": "lib/react-front-mark.js",
   "scripts": {
     "prepublish": "npm run dev && npm run build",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/askbeka/react-search-highlighter"
+    "url": "https://github.com/askbeka/react-front-mark"
   },
   "keywords": [
     "react",
@@ -21,7 +21,11 @@
     "mark",
     "search"
   ],
-  "author": "Beknar Askarov @askbeka",
+  "author": {
+    "name": "Beknar Askarov",
+    "email": "beknaraskarov@gmail.com",
+    "url": "https://github.com/askbeka"
+  },
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.18.0",
