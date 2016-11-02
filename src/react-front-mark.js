@@ -5,7 +5,7 @@ export default class ReactMark extends Component {
     
     static propTypes = {
         word: type.string,
-        children: type.any.isRequired,
+        children: type.any,
         element: type.string,
         className: type.string,
         exclude: type.array,
@@ -62,11 +62,17 @@ export default class ReactMark extends Component {
 
     mark() {
         const {word, children, ...props} = this.props;
-        this.markInstance.mark(word, props);
+        if (word) {
+            this.marked = true;
+            this.markInstance.mark(word, props);
+        }
     }
 
-    mark() {
-        this.markInstance.unmark();
+    unmark() {
+        if (this.marked) {
+            this.markInstance.unmark();
+            this.marked = false;
+        }
     }
 
     redner() {
