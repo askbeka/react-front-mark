@@ -1,6 +1,6 @@
 # react-front-mark
 
-## React component for [mark.js](https://markjs.io/) ([front-markjs](https://www.npmjs.com/package/front-markjs)).
+### React component for [mark.js](https://markjs.io/) ([front-markjs](https://www.npmjs.com/package/front-markjs)).
 
 ## Usage
 ```
