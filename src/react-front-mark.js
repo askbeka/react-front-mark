@@ -50,9 +50,13 @@ export default class Mark extends Component {
         const {done} = this.props;
         if (done) done.apply(null, args);
         this.marked = !this.marked;
+        if (!this.marked) {
+            this.mark();
+        }
     };
 
     mark() {
+        this.unmark();
         if (!this.marked) {
             const {text, children, done, ...props} = this.props;
             if (text) {
@@ -70,6 +74,10 @@ export default class Mark extends Component {
     componentDidMount() {
         this.markInstance = new FrontMark(this.context);
         this.marked = false;
+        this.mark();
+    }
+
+    componentDidUpdate() {
         this.mark();
     }
 
