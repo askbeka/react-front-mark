@@ -1,10 +1,9 @@
 import React, {PropTypes as type, Component} from 'react';
-import Mark from 'front-markjs';
+import FrontMark from 'front-markjs';
 
-export default class ReactMark extends Component {
-    
+export default class Mark extends Component {
     static propTypes = {
-        word: type.string,
+        text: type.string,
         children: type.any,
         element: type.string,
         className: type.string,
@@ -29,7 +28,7 @@ export default class ReactMark extends Component {
         done: type.func,
         debug: type.bool,
         log: type.object
-    }
+    };
 
     static defaultProps = {
         element: 'mark',
@@ -45,37 +44,36 @@ export default class ReactMark extends Component {
         ignoreJoiners: false,
         debug: false,
         log: window.console
-    }
+    };
 
-    componentDidMount() {
-        this.markInstance = new Mark(this.context);
-        this.mark();
-    }
-
-    componentWillUpdate() {
-        this.unmark();
-    }
-
-    componentDidUpdate() {
-        this.mark();
-    }
+    done = (args) => {
+        const {done} = this.props;
+        if (done) done.apply(null, args);
+        this.marked = !this.marked;
+    };
 
     mark() {
-        const {word, children, ...props} = this.props;
-        if (word) {
-            this.marked = true;
-            this.markInstance.mark(word, props);
+        if (!this.marked) {
+            const {text, children, done, ...props} = this.props;
+            if (text) {
+                this.markInstance.mark(text, {done: this.done, ...props});
+            }
         }
     }
 
     unmark() {
         if (this.marked) {
             this.markInstance.unmark();
-            this.marked = false;
         }
     }
 
-    redner() {
+    componentDidMount() {
+        this.markInstance = new FrontMark(this.context);
+        this.marked = false;
+        this.mark();
+    }
+
+    render() {
         return <span ref={(e => this.context = e)}>{this.props.children}</span>;
     }
 }
